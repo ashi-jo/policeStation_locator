@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>FindMyPolice</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/img/favicon.png" rel="icon">
+  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+</head>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/vendor/venobox/venobox.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/complaint-card.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Green - v2.2.0
+  * Template URL: https://bootstrapmade.com/green-free-one-page-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <link href="/css/style.css" rel="stylesheet">
+    <!-- <script type="text/javascript">
+      // const registerURL = `http://localhost:5000/user/register/${ref_id}`;
+      // alert(
+      //   `You are successfully registered!\n To earn rewards share the link down below\n ${registerURL}`
+      // );
+      
+      alert(
+        `You are successfully registered!\n To earn rewards share the link down below\n`
+      );
+      
+    </script> -->
+
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+    <div class="container d-flex">
+      <div class="contact-info mr-auto">
+        <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>
+        <i class="icofont-phone"></i> +1 5589 55488 55
+      </div>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+        <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+        <a href="#" class="skype"><i class="icofont-skype"></i></a>
+        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a href="/">FindMyPolice</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li class="drop-down"><a href="">Complaints</a>
+            <ul>
+              <li><a href="/user/complaints/view/<%=user_id%>">View all complaints</a></li>
+              <li><a href="/user/complaints/post/<%=user_id%>">Post a complaint</a></li>
+              
+            </ul>
+          </li>
+          <li class="drop-down"><a href="">Drives</a>
+            <ul>
+              <li><a href="#">Initiate a drive</a></li>
+              <li><a href="/user/drives/enroll/<%=user_id%>">Enroll in a drive</a></li>
+            </ul>
+          </li>
+          <li><a href="/user/policeStation/<%=user_id%>">Nearest Police station</a></li>
+          
+          <li><a href="/user/profile/view/<%=user_id%>">My profile</a></li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+      <a href="/user/logout" class="get-started-btn scrollto">Logout</a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>All my resolved complaints</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>Posts</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+        
+          <% complaints.forEach((complaint)=>{ %>
+            <div class="blog-post">
+              <div class="blog-post__img" style="padding: 5px;">
+                <img src="<%=complaint.image.toString().substring(6,complaint.image.toString().length)%>" >
+              </div>
+              <div class="blog-post__img" style="padding:5px;">
+                <img src="<%=complaint.resolved_image.toString().substring(6,complaint.resolved_image.toString().length)%>" >
+              </div>
+              <div class="blog-post__info">
+               <div class="blog-post__date">
+                <span><h6 class="blog-post__title">Resolved on: </h6><%=complaint.date.toString().substring(0,15)%>, <%if (complaint.time!=undefined) {%><%=complaint.time.toString()%> <%} %></span>
+               </div>
+               <hr>
+               <h6 class="blog-post__title">Location</h6>
+               <p class="blog-post__text">
+                 <%=complaint.complaint_address%>
+               </p>
+               <% if (complaint.status==="NR") {%>
+                <form action="/user/complaints/ack/<%=user_id%>/<%=complaint.complaint_id%>" method="POST">
+                  
+                  <!-- <div class="form-group">
+                    <label for="comment"><h6 class="blog-post__title">Comment: </h6></label>
+                    <textarea name="comment" class="form-control" rows="3" id="comment" placeholder="(optional)"></textarea>
+                  </div>
+                  <hr> -->
+                  <!-- <label class="radio-inline"><input type="radio" name="optradio" checked><h6 class="blog-post__title">Thank you!</h6></label>
+                  <label class="radio-inline"><input type="radio" name="optradio"><h6 class="blog-post__title">Satisfactory</h6></label>
+                  <label class="radio-inline"><input type="radio" name="optradio"></label> -->
+                  <!-- <div class="container"> -->
+
+
+                    
+                  
+                  
+                      <br/>
+                      <label for="input-1" class="control-label"><h6 class="blog-post__title">Give a rating:</h6></label>
+                      <input style="color: green"id="input-1" name="input1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.5">
+                  <!-- </div> -->
+                    <button class="btn btn-warning">Confirm Acknowledgment</button>
+                </form>
+               
+               <%}else{%>
+                 <p class="blog-post__text">
+                  <button class="btn btn-success">Acknowledged!</button>
+               </p>
+               <%}%>
+
+              </div>
+            </div>
+         <% })%>
+         
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <h3>Green</h3>
+      <p></p>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; Copyright <strong><span>Green</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/vendor/php-email-form/validate.js"></script>
+  <script src="/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/vendor/venobox/venobox.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/js/main.js"></script>
+  <script>
+    $("#input-id").rating();
+    </script>
+  
+</body>
+
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>FindMyPolice</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+  
+  <!-- BootStrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="drivestyle.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Favicons -->
+  <link href="/img/favicon.png" rel="icon">
+  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/vendor/venobox/venobox.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/drivestyle.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Green - v2.2.0
+  * Template URL: https://bootstrapmade.com/green-free-one-page-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+    <div class="container d-flex">
+      <div class="contact-info mr-auto">
+        <i class="icofont-envelope"></i> <a href="mailto:help@police.com">help@police.com</a>
+        <i class="icofont-phone"></i> +91 9987623412
+      </div>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+        <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+        <a href="#" class="skype"><i class="icofont-skype"></i></a>
+        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a href="/">FindMyPolice</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li class="drop-down"><a href="">Complaints</a>
+            <ul>
+              <li><a href="/user/complaints/view/<%=user_id%>">View all complaints</a></li>
+              <li><a href="/user/complaints/post/<%=user_id%>">Post a complaint</a></li>
+            </ul>
+          </li>
+          <!--
+          <li class="drop-down"><a href="">Campaigns</a>
+            <ul>
+              
+              <li><a href="#">Enroll in a Campaign</a></li>
+            </ul>
+          </li> -->
+          <li><a href="/user/policeStation/<%=user_id%>">Nearest Police station</a></li>
+          
+          <li><a href="/user/profile/view/<%=user_id%>">My profile</a></li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+      <a href="/user/logout" class="get-started-btn scrollto">Logout</a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Enroll in a Campaign</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>Enroll in a Campaign</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+        <div class="row searchFilter" >
+          <div class="form group" >
+            <form action="/user/drives/enroll/filter/<%=user_id%>" method="POST">
+              <div class="input-group ml-5" >
+                <input class="form-control" list="distance"  name="distance" placeholder="Select the distance(km)">
+                <datalist id="distance" >
+                  <option value="1"></option>
+                  <option value="3"></option>
+                  <option value="5"></option>
+                  <option value="7"></option>
+                  <option value="10"></option>
+                  <option value="12"></option>
+                  <option value="15"></option>
+                </datalist>
+              
+              <button id="searchBtn" type="submit" class="btn btn-secondary btn-search ml-1" > Search</button>
+            </form>
+          </div>
+          
+        </div>
+        
+        <div>
+          <form action="/user/drives/enroll/map/<%=user_id%>">
+            <button id="mapBtn" type="submit" class="btn btn-secondary btn-search " style="position: inline; margin-left: 500px;">View On Map</button>
+          </form>
+
+          <form action="/user/drives/enroll/feedback/<%=user_id%>">
+            <button type="submit" class="btn btn-secondary btn-search mt-2" style="position: inline; margin-left: 500px;">Provide Feedback</button>
+          </form>
+        </div>
+      </div>
+    
+
+      <div class="container">
+       
+          <% for(var i = 0; i<addressArr.length; i++) { %>
+        <div class="drive-enroll">
+          <div class="drive-enroll-info">
+            <h1 class="drive-enroll-title">
+                    <span><%= campaignItems[i].campaign_name %></span> 
+                </h1>
+                <p class="drive-enroll-place">
+                    <span>Address: <%= addressArr[i]%></span> 
+                </p>
+                <div class="dirve-enroll-date">
+                    <span>Date: <%= campaignItems[i].date  %></span>
+                </div>
+                <div class="dirve-enroll-date">
+                    <span>Start Time:<%= campaignItems[i].time_of_start  %></span>
+                </div>
+                <div class="dirve-enroll-date">
+                    <span>End Time: <%= campaignItems[i].time_of_end  %></span>
+                </div>
+                <div >
+                  <form action="/user/drives/enroll/<%=user_id%>" method="POST">
+                    <input type="hidden" name="camp_name" value="<%= campaignItems[i].campaign_name %>">
+                  <button class="enroll-button" type="submit" name="enroll" value="<%=campaignItems[i].campaign_id%>" >Enroll Now</button>
+                  </form>
+                </div>
+            </div>
+          </div>
+          <%}%>
+          
+        </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <h3>Green</h3>
+      <p></p>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; Copyright <strong><span>Green</span></strong>. All Rights Reserved
+      </div>
+      
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/vendor/php-email-form/validate.js"></script>
+  <script src="/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/vendor/venobox/venobox.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/js/main.js"></script>
+ 
+
+</body>
+
+</html>
