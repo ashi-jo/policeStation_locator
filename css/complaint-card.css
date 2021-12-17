@@ -1,0 +1,133 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 15px;
+}
+
+img {
+  width: 100%;
+}
+/* body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+  padding: 0 1.5rem;
+} */
+.inner-page.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+  padding: 0 1.5rem;
+}
+
+.blog-post {
+  width: 100%;
+  max-width: 98rem;
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 0 1.4rem 8rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 0.8rem;
+  border: 4px solid #5cb874;
+  margin-bottom: 1rem;
+}
+
+.blog-post__img {
+  min-width: 15rem;
+  max-width: 15rem;
+  height: 15rem;
+  transform: translateX(-1rem);
+  position: relative;
+}
+
+.blog-post__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0.8rem;
+}
+.blog-post__img::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* background: linear-gradient(to right, rgba(79, 172, 254, 0.8), #fff); */
+  box-shadow: 0.5rem 0.5rem 3rem 1px rgba(0, 0, 0, 0.05);
+  border-radius: 0.8rem;
+}
+
+.blog-post__date span {
+  display: block;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.blog-post__title {
+  font-size: 1.5rem;
+  margin: 1.5rem 0 2 rem;
+  color: #57b846;
+}
+
+.blog-post__text {
+  margin-bottom: 3 rem;
+  font-size: 1.4rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.blog-post__cta {
+  display: inline-block;
+  padding: 1.5rem 3 rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  color: #fff;
+  background-image: linear-gradient(to right, #4facfe 0%, #00fe61 100%);
+  border-radius: 0.8rem;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1068px) {
+  .blog-post {
+    max-width: 80rem;
+  }
+  .blog-post__img {
+    min-width: 30rem;
+    max-width: 30rem;
+  }
+}
+
+@media screen and (max-width: 868px) {
+  .blog-post {
+    max-width: 70rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .blog-post {
+    padding: 2.5rem;
+    flex-direction: column;
+    margin-bottom: 7rem;
+    margin-top: 7rem;
+  }
+  .blog-post__img {
+    min-width: 100%;
+    max-width: 100%;
+    transform: translate(0, -1rem);
+  }
+}
