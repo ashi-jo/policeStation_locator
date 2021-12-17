@@ -1,0 +1,22 @@
+1) Install nodejs
+2) Install Git
+3) Install sublime
+4) Install postgreSQL
+	connect to server
+	use only lower case letters for databases
+	Select database in pgadmin. Select Query tools. -> CREATE EXTENSION postgis. 
+	Check again in extensions in your database in pgAdmin. One extension will be postgis.
+	https://blog.logrocket.com/setting-up-a-restful-api-with-node-js-and-postgresql-d96d6fc892d8/
+	
+	CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+	
+5) Install neo4j
+ 
+Shauchalay Queries:
+
+
+1) INSERT INTO latrine(lat , long , latrine_location ) VALUES (18.96081,72.825, ST_MakePoint(18.96081, 72.825));
+2) SELECT * FROM latrine WHERE st_intersects(campaign.geolocation,st_buffer(users.geolocation,$1)) AND users.user_id=$2
+
+3) modified:
+SELECT * FROM latrine WHERE st_intersects(ST_MakePoint(18.96081, 72.9),st_buffer(latrine.latrine_location,10000)); 
