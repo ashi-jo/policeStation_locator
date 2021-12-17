@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+
+    <style>
+      /* Set the size of the div element that contains the map */
+      #map {
+        margin:40px auto;
+
+        height: 600px;  /* The height is 400 pixels */
+        width: 90%;  /* The width is the width of the web page */
+       }
+       .custom-list{
+        column-count:4;
+       }
+    </style>
+  </head>
+  <body>
+    
+    
+    <h3>Nearest Shouchalay Points Points</h3>
+    <div id="map"></div>
+    <script>
+      var map;
+      var InforObj = [];
+      var centerCords = {
+        lat: <%=lat%>,
+        lng: <%=long%>
+      };
+      var INDIA_BOUNDS = {
+
+        north: 20,
+        south: 15,
+        west: 70,
+        east: 80,
+      };
+
+
+
+      window.onload = function () {
+          initMap();
+          addMarkerInfo();
+      };
+
+      function initMap() {
+        map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 16,
+              restriction: {
+            latLngBounds: INDIA_BOUNDS,
+            strictBounds: false,
+          },center: centerCords});
+        }
+      
+
+        function addMarkerInfo() {
+          var polylinePlanCoordinates  = [];
+          var c=1;
+          var count=1;
+
+
+          var myLatLng = { lat: <%=lat%>, lng: <%=long%> };
+
+               //var marker = new google.maps.Marker({position: polylinePlanCoordinates[0], map: map,});
+              
+              var marker = new google.maps.Marker({
+                position: myLatLng,
+                map,
+                title: "Start Location",
+                
+            });
+          
+         polylinePlanCoordinates.push(new google.maps.LatLng(<%=lat%>, <%=long%>));
+         
+          <%for(var i=0;i<latl.length;i++) 
+
+          {%>
+
+
+            polylinePlanCoordinates.push(new google.maps.LatLng(<%=latl[i].lat%>, <%=latl[i].long%>));
+              var myLatLng = { lat: <%=latl[i].lat%>, lng: <%=latl[i].long%> };
+
+               //var marker = new google.maps.Marker({position: polylinePlanCoordinates[0], map: map,});
+              
+              var marker = new google.maps.Marker({
+                position: myLatLng,
+                map,
+                title: "Latrine here",
+                icon: {
+                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                strokeColor: "red",
+                scale: 3
+            }  });
+        <%}
+
+        %>
+
+
+                   //var marker = new google.maps.Marker({position: polylinePlanCoordinates[0] }, map:map,icon:'./static/dust3.png' });
+
+        /*  {%for row in upbin %}
+            var marker = new google.maps.Marker({position: {lat: {{row.lat}}, lng: {{row.lon}} }, map: map ,title: 'Most Updated Location:{{ row.loc }} , Bin id:{{row.bin_id}}' ,icon:'./static/dust4.png' });
+          {% endfor %}*/
+
+
+          var path= new google.maps.Polyline({
+      path: polylinePlanCoordinates,
+     geodesic: true,
+    strokeColor: '#0000FF',
+    strokeOpacity: 1.0,
+    strokeWeight: 3
+     });
+
+     path.setMap(map);
+      }
+
+   </script>
+    
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEgux74u8kAzQ_YsUWPfoLFGjXPQN7U7E&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+  </body>
+</html>
