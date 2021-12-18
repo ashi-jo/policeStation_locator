@@ -1,4 +1,4 @@
-# FinMYPolice
+# FindMyPolice
 
 ### This is an application being developed for keeping Mumbai Safe by providing efficient information regarding police stations and crimes
 
